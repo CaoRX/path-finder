@@ -1,0 +1,63 @@
+Find the optimal path around locations
+
+optimal: time, cost
+
+Input:
+
+[number-of-locations]
+[location-information]
+[location-information]
+...
+[number-of-edges]
+[edge-information]
+[edge-information]
+...
+
+[location-information]
+location: (index), time needed, available time range(unit: hours)
+example:
+
+1 # 1 hour needed
+5 
+120 123
+124 127
+130 133
+140 142
+145 148
+
+[edge-information]
+the connection between locations
+format: [start-time] [end-time] [time-cost] [money-cost]
+
+3 4 
+2
+120 123 3 1000 
+140 148 1 4000
+
+# edge between location 3 and 4
+# 2 different ways to reach 4 from 3
+# can be used between time 120~123, it takes 3 hours, and 1000 en
+# can be used between time 140~148, it takes 1 hour, and 4000 en
+
+Ouput:
+[money-optimal-path]
+[time-optimal-path]
+
+Start from 0, go around 1 ~ n, and return back to 0
+
+[money-optimal-path]
+[finish-time] [money-cost]
+[order-of-locations](permutation of 1 ~ n)
+
+[time-optimal-path]
+[finish-time] [money-cost]
+[order-of-locations](permutation of 1 ~ n)
+
+Algorithm:
+f[T][S][i]: the optimal money cost at time T, just ended work at location i, and current state S
+
+data range:
+one week(24 * 7 = 168 hours)
+10 spots(2^10 = 1024 states)
+total number of states: 168 * 1024 * 10 = 1720320(maximum)
+expected calculation time: < 1s
